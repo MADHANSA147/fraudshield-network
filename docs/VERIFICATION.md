@@ -1,5 +1,19 @@
 # Verification record — 28 September 2026
 
+## Published clean-environment verification
+
+Public repository: https://github.com/MADHANSA147/fraudshield-network
+
+[GitHub Actions run 36365849951](https://github.com/MADHANSA147/fraudshield-network/actions/runs/36365849951)
+passed both backend and frontend jobs on clean Ubuntu runners for code commit
+`1ff18d9ebf4646f2e06003b17aaf42b775b13a6c`. The backend installed CPU Torch
+and locked dependencies, installed the project, ran Ruff and the full test suite.
+The frontend installed from the npm lock and passed the TypeScript/Vite build.
+This verifies clean Linux installation and tests, not Docker deployment or a
+confidential institutional deployment.
+
+## Local revision checks
+
 Dark-theme revision: all seven navigation pages opened in the real browser;
 completed-run detail, evidence and blocked release review displayed real data.
 The 390px release-review layout and mobile navigation were checked. Dialog

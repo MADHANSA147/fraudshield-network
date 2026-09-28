@@ -11,7 +11,7 @@ No prior private-project implementation is copied into this repository.
 | 4. Evidence | Public metrics; OpenDP validation; baselines/ablations; limited membership attacks with controls and bootstrap intervals; exposure/poisoning diagnostics; sweeps | Actual PaySim utility, stronger institution/time-matched attacks and larger low-FPR samples |
 | 5. Governance | Hash-bound approvals; gate; signed bundles; tamper/ZIP tests; activation/scoring | No qualifying measured candidate; standalone remote private candidates are not integrated into web release review |
 | 6. SaaS | Eight workflow surfaces; roles; enrollment; durable jobs; local workers; RQ configuration; usage; Stripe/S3 adapters | Actual Stripe/S3 account tests; production authentication and operational hardening |
-| 7. Delivery | TypeScript build; Python lint/tests; browser check; dependency locks; Docker/CI configuration; documentation/demo script | Docker/clean Linux verification; public deployment; remote CI; recording/submission |
+| 7. Delivery | TypeScript build; Python lint/tests; browser check; dependency locks; Docker configuration; clean Ubuntu GitHub CI passed; public source repository; documentation/demo script | Docker verification; hosted application deployment; recording/submission |
 
 Public fixture results are never labeled PaySim results. Missing private-mode prerequisites
 block execution. Formal guarantee claims require the actual mechanism and trust assumptions.
@@ -37,8 +37,9 @@ package is absent from this Windows runtime. Confidential execution refuses
 that missing prerequisite.
 
 The Windows environment reused installed scientific libraries to avoid duplicating
-large packages on a nearly full system drive. The dependency lock describes that
-tested environment, not a successful clean-container installation.
+large packages on a nearly full system drive. The dependency lock also passed
+clean Ubuntu GitHub CI installation and tests. A clean-container installation
+has not been verified.
 
 ## Interpreting the model evidence
 
