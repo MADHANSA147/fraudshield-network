@@ -1,0 +1,13 @@
+{
+  "name": "Frozen public-development configuration",
+  "mode": "public_fixture",
+  "epsilon_cap": 4,
+  "capacity": 8192,
+  "batch_size": 128,
+  "rounds": 5,
+  "local_steps": 100,
+  "clipping_norm": 1,
+  "learning_rate": 0.5,
+  "positive_weight": 1,
+  "seed": 242
+}

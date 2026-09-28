@@ -1,0 +1,61 @@
+services:
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: fraudshield
+      POSTGRES_USER: fraudshield
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fraudshield"]
+      interval: 5s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment: &application
+      FRAUDSHIELD_HOME: /data
+      FRAUDSHIELD_DATABASE_URL: postgresql+psycopg://fraudshield:${POSTGRES_PASSWORD}@database/fraudshield
+      FRAUDSHIELD_QUEUE: redis
+      REDIS_URL: redis://redis:6379/0
+      FRAUDSHIELD_ORIGINS: ${FRAUDSHIELD_ORIGINS:-http://localhost:8000,http://127.0.0.1:8000}
+      FRAUDSHIELD_PUBLIC_URL: ${FRAUDSHIELD_PUBLIC_URL:-http://localhost:8000}
+      FRAUDSHIELD_ALLOW_DEMO: "1"
+      FRAUDSHIELD_SECURE_COOKIES: ${FRAUDSHIELD_SECURE_COOKIES:-0}
+      FRAUDSHIELD_WEB_DIST: /app/apps/web/dist
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_PRICE_ID: ${STRIPE_PRICE_ID:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+    volumes:
+      - application:/data
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  worker:
+    build: .
+    command: ["rq", "worker", "--url", "redis://redis:6379/0", "--disable-job-desc-logging", "default"]
+    environment: *application
+    volumes:
+      - application:/data
+    healthcheck:
+      disable: true
+    depends_on:
+      api:
+        condition: service_healthy
+volumes:
+  database:
+  redis:
+  application:

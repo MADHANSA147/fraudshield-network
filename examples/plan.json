@@ -1,0 +1,7 @@
+{
+  "name": "Three-institution public experiment",
+  "mode": "public_fixture",
+  "epsilon_cap": 4,
+  "rounds": 3,
+  "local_steps": 12
+}

@@ -1,0 +1,10 @@
+{
+  "ca": "/coordinator/tls/consortium-ca.pem",
+  "certificate": "/coordinator/tls/coordinator.pem",
+  "private_key": "/coordinator/tls/coordinator.key",
+  "nodes": [
+    {"institution": "atlas", "host": "atlas.internal", "port": 8443, "signing_public_key": "PIN_ATLAS_KEY"},
+    {"institution": "meridian", "host": "meridian.internal", "port": 8443, "signing_public_key": "PIN_MERIDIAN_KEY"},
+    {"institution": "harbor", "host": "harbor.internal", "port": 8443, "signing_public_key": "PIN_HARBOR_KEY"}
+  ]
+}

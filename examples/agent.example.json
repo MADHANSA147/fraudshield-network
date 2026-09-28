@@ -1,0 +1,10 @@
+{
+  "institution": "atlas",
+  "directory": "/institution/fraudshield",
+  "bind": "127.0.0.1",
+  "port": 8443,
+  "ca": "/institution/tls/consortium-ca.pem",
+  "certificate": "/institution/tls/atlas.pem",
+  "private_key": "/institution/tls/atlas.key",
+  "coordinator_public_key": "REPLACE_WITH_PINNED_ED25519_PUBLIC_KEY"
+}

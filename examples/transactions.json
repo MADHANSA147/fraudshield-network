@@ -1,0 +1,4 @@
+[
+  {"amount": 4500, "oldbalanceOrg": 8200, "type": "TRANSFER", "step": 12},
+  {"amount": 120, "oldbalanceOrg": 3500, "type": "PAYMENT", "step": 15}
+]
