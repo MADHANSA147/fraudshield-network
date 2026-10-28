@@ -8,6 +8,7 @@ import time
 import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from fastapi import Cookie, Depends, FastAPI, Header, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,7 +44,8 @@ async def security_headers(request, call_next):
         origin = request.headers.get("origin")
         permitted = set(os.environ.get("FRAUDSHIELD_ORIGINS",
                         "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:8000,http://localhost:8000").split(","))
-        if origin and origin not in permitted and not request.url.path.startswith("/api/billing/webhook"):
+        same_host = origin and urlsplit(origin).netloc == request.headers.get("host")
+        if origin and origin not in permitted and not same_host and not request.url.path.startswith("/api/billing/webhook"):
             return Response("Origin not permitted", status_code=403)
     response = await call_next(request)
     response.headers["X-Content-Type-Options"] = "nosniff"
@@ -206,7 +208,12 @@ def enroll(body: EnrollmentInput):
 
 
 def dispatch(run_id):
-    if os.environ.get("FRAUDSHIELD_QUEUE") == "redis":
+    if os.environ.get("FRAUDSHIELD_DEMO_INLINE") == "1":
+        # Cloud Run's request-based CPU is available for the active request only.
+        # This bounded public-fixture mode keeps the demo run inside that request.
+        from .worker import execute
+        execute(run_id)
+    elif os.environ.get("FRAUDSHIELD_QUEUE") == "redis":
         from redis import Redis
         from rq import Queue
         Queue(connection=Redis.from_url(os.environ["REDIS_URL"])).enqueue(

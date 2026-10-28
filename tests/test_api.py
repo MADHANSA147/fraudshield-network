@@ -67,6 +67,22 @@ def test_cross_origin_post_rejected(client):
     assert client.post("/api/demo/session", json={"name": "Test"}, headers={"Origin": "https://attacker.invalid"}).status_code == 403
 
 
+def test_same_origin_post_allowed(client):
+    response = client.post("/api/demo/session", json={"name": "Same Origin"},
+                           headers={"Origin": "http://testserver"})
+    assert response.status_code == 200
+
+
+def test_demo_inline_dispatch(monkeypatch):
+    from fraudshield import worker
+
+    executed = []
+    monkeypatch.setenv("FRAUDSHIELD_DEMO_INLINE", "1")
+    monkeypatch.setattr(worker, "execute", lambda run_id: executed.append(run_id))
+    api.dispatch("cloud-run-demo")
+    assert executed == ["cloud-run-demo"]
+
+
 def test_enrollment_is_one_time_and_owner_cannot_approve_another_institution(client, tmp_path):
     from fraudshield.security import load_key, public_key
     workspace(client)
