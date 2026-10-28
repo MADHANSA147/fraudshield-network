@@ -5,6 +5,81 @@ Use this as the source of truth for the written Devpost fields. Replace every
 claim a hosted deployment, payment integration, customer traction, real-bank
 results, or a released fraud model until it has actually been completed.
 
+## Final form-ready copy
+
+### Project title
+
+**FraudShield Network**
+
+### Tagline / elevator pitch
+
+**The approval layer for privacy-preserving collaborative fraud AI: data stays local; evidence decides release.**
+
+### Primary domain / track
+
+**Autonomous AI & Intelligent Agents**
+
+### Executive briefing & problem statement
+
+Fraud detection is a collaboration problem: a single institution sees only one
+slice of evolving fraud patterns, yet transaction data cannot be centralised
+without creating regulatory, security and ownership risk. Most federated-learning
+prototypes stop once updates are aggregated. That leaves the hardest enterprise
+question unanswered: who can prove that a shared model is safe, private and good
+enough to release?
+
+FraudShield Network is the operating layer for that decision. Three institutions
+train a shared fraud model while records remain in their local workers. Updates
+are clipped and differentially private, then combined through Flower SecAgg+.
+Each institution has a durable privacy ledger, so training and validation
+expenditure cannot be silently reset. The platform binds the signed training
+contract, privacy receipts, protected validation evidence, attack diagnostics,
+quality thresholds and owner approvals to the exact candidate model.
+
+Judges can follow the complete workflow in one premium workspace: enrol
+institutions, launch collaborative training, inspect the Evidence Lab, review a
+release decision, and inspect the local scoring contract that accepts only a
+signed approved bundle. The public demo uses generated fixture data and
+intentionally keeps candidates that fail the recall or false-alert policy
+blocked. That is the point: a weak model never becomes “safe” because someone
+clicks Approve. FraudShield converts privacy-preserving ML from a training
+experiment into an accountable SaaS release process.
+
+### Fiscal architecture & monetization engine
+
+FraudShield sells a consortium workspace, not transaction surveillance. The
+initial offer is a **$499/month three-institution pilot**: a shared governance
+workspace, three connector slots, collaborative training, evidence review and a
+signed model registry. Customers pay predictable platform value before their
+records ever leave their own boundary.
+
+Usage overages are based on worker compute time and secure-aggregation traffic,
+not transaction counts, fraud labels or inference volume. This protects customer
+data while giving the platform a transparent, scalable revenue loop. The product
+records this usage today and includes a sandbox Stripe checkout/webhook path;
+checkout is deliberately disabled until test credentials are configured. A
+higher-touch enterprise tier can price private deployment, added institutions,
+dedicated support and customer-controlled operating boundaries separately. The
+$499 pilot price is an explicit validation hypothesis, not claimed revenue.
+
+### Primary tech stack used
+
+**TypeScript, React, Vite, Python, FastAPI, PyTorch, Opacus, Flower SecAgg+,
+OpenDP, SQLAlchemy, SQLite/PostgreSQL, Redis/RQ, Safetensors, Docker and GitHub
+Actions.**
+
+### Public code repository
+
+**https://github.com/MADHANSA147/fraudshield-network**
+
+### Project banner text
+
+```text
+FraudShield Network
+The approval layer for privacy-preserving collaborative fraud AI
+Data stays local. Evidence decides release.
+```
+
 ## Project title
 
 **FraudShield Network**
