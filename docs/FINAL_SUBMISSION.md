@@ -7,6 +7,55 @@ results, or a released fraud model until it has actually been completed.
 
 ## Final form-ready copy
 
+### Preferred concise entries for the final form
+
+Use these versions for the three fields shown in the final-submission form.
+They present the platform vision without representing the current fraud-specific
+detector as an already universal model.
+
+#### Executive briefing & problem statement
+
+FraudShield Network is the release-governance layer for collaborative AI.
+Institutions train together without pooling sensitive records, while
+decision-makers can verify the privacy budget, evidence and exact model behind
+every release.
+
+We intentionally ship one complete vertical—cross-institution fraud detection—
+instead of claiming an unproven universal model. The detector uses a fixed
+transaction schema; the reusable core is its signed training contract,
+per-institution privacy ledger, DP-SGD, Flower SecAgg+, protected validation,
+attack evidence, release policy and signed registry.
+
+This turns federated learning from “we aggregated updates” into an accountable
+SaaS workflow. A candidate is released only if privacy receipts, secure
+aggregation, protected validation, quality thresholds and owner approvals bind
+to the same model. The public demo uses generated fixtures and keeps weak
+candidates BLOCKED; approval never overrides evidence. Fraud is the first
+module; other regulated domains can adopt the same governance core with their
+own schema, detector and evaluation policy.
+
+#### Fiscal architecture & monetization engine
+
+FraudShield uses a consortium SaaS model: **$499/month** for an initial
+three-institution pilot, including a shared governance workspace, three
+connector slots, collaborative training, evidence review and a signed model
+registry. Revenue scales through metered worker compute and secure-aggregation
+traffic—never transaction counts, fraud labels or inference volume. The product
+records usage and includes sandbox Stripe/webhook support; checkout remains
+disabled until credentials are configured. An enterprise tier can price private
+deployment, additional institutions and dedicated support. The $499 figure is a
+pricing hypothesis, not claimed revenue.
+
+#### Primary tech stack used
+
+**React + TypeScript (Vite) · Python + FastAPI · PyTorch + Opacus · Flower
+SecAgg+ · OpenDP · SQLAlchemy + PostgreSQL · Redis/RQ · Safetensors · Docker ·
+GitHub Actions**
+
+If the dropdown provides only a broad JavaScript category, choose the
+**TypeScript / JavaScript** option. Do not describe the application as Next.js:
+it is built with React and Vite.
+
 ### Project title
 
 **FraudShield Network**
