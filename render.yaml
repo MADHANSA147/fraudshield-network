@@ -1,0 +1,17 @@
+# Public, generated-fixture demo for the Galuxium Nexus V2 submission.
+# This service deliberately has no external database, queue, credentials, or
+# private-data connector. Its SQLite state is ephemeral on Render Free.
+services:
+  - type: web
+    name: fraudshield-network
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/ready
+    envVars:
+      - key: FRAUDSHIELD_ALLOW_DEMO
+        value: "1"
+      - key: FRAUDSHIELD_DEMO_INLINE
+        value: "1"
+      - key: FRAUDSHIELD_SECURE_COOKIES
+        value: "1"

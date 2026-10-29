@@ -17,6 +17,9 @@ The earlier [short smoke study](docs/benchmark/RESULTS.md) is retained separatel
 The interface uses a responsive dark theme. The [complete blueprint audit](docs/BLUEPRINT-AUDIT.md)
 maps all 22 planning sections to implementation evidence and outstanding acceptance work.
 
+For a temporary public hackathon URL, use the [Render deployment guide](docs/RENDER_DEMO.md).
+It describes the generated-fixture-only deployment and its free-plan constraints.
+
 ## Open the application
 
 In the prepared Windows workspace:
