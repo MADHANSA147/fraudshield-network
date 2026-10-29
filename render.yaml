@@ -5,7 +5,9 @@ services:
   - type: web
     name: fraudshield-network
     runtime: docker
-    plan: free
+    # Three isolated Torch workers run genuine DP-SGD + SecAgg+ for the
+    # short public-fixture experiment. This requires more than Free's 512 MB.
+    plan: 1c-2g
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/ready
     envVars:

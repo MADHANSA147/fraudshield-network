@@ -11,7 +11,8 @@ institutional data, and it does not include external credentials.
 2. Select **New Blueprint Instance**, then choose
    `MADHANSA147/fraudshield-network`.
 3. Select the `codex/fraudshield` branch if Render asks. The repository's
-   `render.yaml` creates the `fraudshield-network` web service on the Free plan.
+   `render.yaml` creates the `fraudshield-network` web service on Render's
+   `1c-2g` plan (1 CPU, 2 GB RAM).
 4. Click **Apply** and wait for the Docker build and `/api/ready` health check.
 5. Open the generated `https://fraudshield-network.onrender.com` URL from the
    service dashboard. Render adds a suffix if that name is already in use.
@@ -34,18 +35,16 @@ browser request instead of starting a detached worker.
 5. Paste the exact Render HTTPS URL into the hackathon **Live Working Demo URL**
    field only after these checks succeed.
 
-## Free-plan constraints
+## Demo-service constraints
 
-Render Free currently provides 512 MB RAM and 0.1 CPU, sleeps after inactivity,
-and has an ephemeral local filesystem. FraudShield's full three-institution
-training simulation is compute-heavy, so the public interface and evidence
-views are the most reliable free-tier demo. The quick training run can be slow
-or exceed this plan's resources. If that happens, do not misrepresent it as a
-successful run: use the recorded public evidence views for the submission or
-move the same Docker image to a host with at least 2 GiB memory.
+Render's `1c-2g` plan is a paid plan with 1 CPU and 2 GB RAM. This capacity is
+configured because FraudShield runs three isolated Torch institution workers for
+a genuine public-fixture DP-SGD + SecAgg+ experiment. It is still a temporary
+demo service, not a production confidential deployment.
 
-Every restart, redeploy, or free-plan recycle can erase workspaces, demo keys,
-ledgers, and run history. The hosted URL is therefore a temporary public
+Every restart or redeploy can erase workspaces, demo keys, ledgers, and run
+history because this single-service demo deliberately uses ephemeral SQLite
+state. The hosted URL is therefore a temporary public
 demonstration, never a confidential or production deployment.
 
 For Render Blueprint syntax and current free-plan limits, see the official
